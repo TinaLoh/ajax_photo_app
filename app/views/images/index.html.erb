@@ -1,0 +1,20 @@
+<form>
+  <label>URL</table>
+  <input type="text" id="url"></input>
+  <label>Title</table>
+  <input type="text" id="title"></input>
+  <label>Username</table>
+  <input type="text" id="username"></input>
+  <input type="submit"></input>
+</form>
+
+<div id="images">
+    <% @images.each do |image| %>
+      <div class="image-container" data-id=<%= image.id %>>
+        <div class="delete">X</div>
+        <img src="<%= image.url %>" style="height: 100px; width: 100px">
+        <h3><%= image.title %></h3>
+        <p>posted by <%= image.username %></p>
+      </div>
+    <% end %>
+</div>

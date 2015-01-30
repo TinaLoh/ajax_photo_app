@@ -1,14 +1,14 @@
 $(document).ready(function(){
 
-$("form").submit(function(event){
+  $("form").submit(function(event){
     event.preventDefault();
     var url = $("#url").val();
     var title = $("#title").val();
     var username = $("#username").val();
     $.ajax({
-        url: "/create",
-        type: "post",
-        data: {image: {url: url, title: title, username: username}}
+      url: "/create",
+      type: "post",
+      data: {image: {url: url, title: title, username: username}}
     })
     .done(function(data){
       var id = data.id;
@@ -22,22 +22,21 @@ $("form").submit(function(event){
       $("#images").append(newImage);
       newImage.fadeIn();
     });
-});
+  });
 
-$(document).on("click", ".delete", function(){
+  $(document).on("click", ".delete", function(){
     var image = $(this).parent();
     var id = image.attr("data-id");
     console.log(id);
     $.ajax({
-        url: "/destroy",
-        type: "delete",
-        data: {id: id}
+      url: "/destroy",
+      type: "delete",
+      data: {id: id}
     })
     .done(function(){
       image.fadeOut(300, function(){
         image.remove();
       });
     });
-});
-
+  });
 });
